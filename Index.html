@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bônus 4 — Durma Bem Para Viver com Leveza | Ana Luiza Medeiros</title>
+<style>
+  :root {
+    --bg:#FBF8F3; --terracota:#C4785A; --terracota-light:#F0DDD5;
+    --salvia:#7A9B76; --salvia-light:#E8F0E6; --grafite:#2C2C2A;
+    --cream:#F5EFE6; --linha:#D9BFB5; --white:#ffffff;
+    --noite:#1a1a2e; --noite-mid:#16213e; --lua:#e8d5b7;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--bg);color:var(--grafite);font-family:Arial,'DM Sans',sans-serif;font-size:16px;line-height:1.7}
+
+  /* HEADER */
+  .header{background:var(--noite);color:var(--white);padding:36px 24px 28px;text-align:center;position:relative;overflow:hidden}
+  .header::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 70% 50%,rgba(122,155,118,.15) 0%,transparent 70%)}
+  .header .badge{display:inline-block;background:var(--terracota);color:var(--white);font-size:11px;font-weight:bold;letter-spacing:2px;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:14px;position:relative}
+  .header h1{font-family:Georgia,serif;font-size:clamp(22px,5vw,34px);font-weight:normal;font-style:italic;color:var(--lua);line-height:1.3;margin-bottom:8px;position:relative}
+  .header p{color:#aaa;font-size:13px;position:relative}
+  .estrelas{font-size:22px;letter-spacing:6px;margin-bottom:10px;opacity:.7}
+
+  /* NAV */
+  .nav{position:sticky;top:0;z-index:100;background:var(--noite);border-top:1px solid #2a2a3e;display:flex;overflow-x:auto;scrollbar-width:none}
+  .nav::-webkit-scrollbar{display:none}
+  .nav a{flex-shrink:0;color:#aaa;text-decoration:none;padding:12px 16px;font-size:13px;white-space:nowrap;transition:color .2s,border-bottom .2s;border-bottom:2px solid transparent}
+  .nav a:hover,.nav a.active{color:var(--lua);border-bottom:2px solid var(--terracota)}
+
+  .progress-bar-wrap{background:#e0dbd4;height:5px;position:sticky;top:43px;z-index:99}
+  .progress-bar-fill{height:5px;background:linear-gradient(90deg,var(--noite),var(--salvia));width:0%;transition:width .5s ease}
+
+  .section{padding:48px 20px;max-width:720px;margin:0 auto}
+  .section+.section{border-top:1px solid var(--linha)}
+
+  /* INTRO CARD */
+  .intro-card{background:var(--cream);border-left:4px solid var(--terracota);border-radius:12px;padding:28px 24px;margin-bottom:28px}
+  .intro-card h2{font-family:Georgia,serif;font-size:20px;color:var(--terracota);margin-bottom:12px}
+  .intro-card p{color:#555;margin-bottom:10px}
+
+  .how-to{display:grid;gap:12px;margin-top:20px}
+  .how-step{display:flex;gap:16px;align-items:flex-start;background:var(--white);border-radius:10px;padding:14px 16px;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+  .how-num{background:var(--noite);color:var(--lua);font-weight:bold;font-size:13px;width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+  .how-step p{font-size:14px;color:#555}
+
+  /* SECTION TITLES */
+  .sec-header{display:flex;align-items:center;gap:14px;margin-bottom:24px}
+  .sec-num{background:var(--noite);color:var(--lua);font-family:Georgia,serif;font-size:20px;font-style:italic;width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+  .sec-title h2{font-family:Georgia,serif;font-size:20px;color:var(--grafite)}
+  .sec-title span{font-size:13px;color:var(--terracota)}
+
+  /* CICLO DO SONO */
+  .ciclo-wrap{background:var(--noite);border-radius:14px;padding:24px 20px;margin:20px 0}
+  .ciclo-title{color:var(--lua);font-size:13px;font-weight:bold;text-align:center;margin-bottom:16px;letter-spacing:1px;text-transform:uppercase}
+  .ciclo-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+  .ciclo-item{border-radius:8px;padding:10px 8px;text-align:center}
+  .ciclo-item span{display:block;font-size:11px;color:#ccc;margin-top:4px}
+  .c-n1{background:#2d4a6e} .c-n2{background:#1a5276} .c-n3{background:#1a3a5c} .c-rem{background:#4a235a}
+  .ciclo-item strong{font-size:13px;color:var(--white)}
+  .ciclo-legenda{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px;justify-content:center}
+  .leg-item{display:flex;align-items:center;gap:5px;font-size:11px;color:#aaa}
+  .leg-dot{width:10px;height:10px;border-radius:2px;flex-shrink:0}
+
+  /* HORAS */
+  .horas-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:16px 0}
+  .hora-card{border-radius:10px;padding:14px;text-align:center}
+  .hora-card strong{display:block;font-size:22px;font-weight:bold;margin-bottom:2px}
+  .hora-card span{font-size:12px}
+  .h-ideal{background:#e8f0e6;color:#2d5a2a} .h-ideal strong{color:#2d5a2a}
+  .h-atencao{background:#fff8e1;color:#7a6a00} .h-atencao strong{color:#b8860b}
+  .h-risco{background:#fff3cd;color:#856404} .h-risco strong{color:#d68910}
+  .h-critico{background:#fde8e8;color:#8b0000} .h-critico strong{color:#c0392b}
+
+  /* RELÓGIO CIRCADIANO */
+  .circadiano{display:grid;gap:10px;margin:20px 0}
+  .circ-item{display:flex;align-items:center;gap:14px;background:var(--white);border-radius:10px;padding:14px 16px;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+  .circ-hora{background:var(--noite);color:var(--lua);font-size:12px;font-weight:bold;padding:6px 10px;border-radius:8px;white-space:nowrap;min-width:72px;text-align:center}
+  .circ-info strong{display:block;font-size:14px;color:var(--grafite);margin-bottom:2px}
+  .circ-info span{font-size:13px;color:#666}
+  .dica-ouro{background:linear-gradient(135deg,var(--noite),#2d1f3d);border-radius:12px;padding:18px 20px;margin-top:16px;display:flex;gap:14px;align-items:flex-start}
+  .dica-ouro .icone{font-size:24px;flex-shrink:0}
+  .dica-ouro p{color:#ddd;font-size:14px;line-height:1.6}
+  .dica-ouro strong{color:var(--lua)}
+
+  /* PROTOCOLO NOTURNO */
+  .protocolo{display:grid;gap:12px;margin:20px 0}
+  .proto-item{display:flex;align-items:flex-start;gap:14px;background:var(--white);border-radius:12px;padding:16px 18px;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+  .proto-tempo{background:var(--noite);color:var(--lua);font-size:12px;font-weight:bold;padding:6px 12px;border-radius:20px;white-space:nowrap;flex-shrink:0;text-align:center;min-width:80px}
+  .proto-info strong{display:block;font-size:14px;color:var(--grafite);margin-bottom:3px}
+  .proto-info span{font-size:13px;color:#666}
+
+  /* AMBIENTE */
+  .ambiente-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin:20px 0}
+  .amb-card{background:var(--white);border-radius:12px;padding:18px;box-shadow:0 1px 4px rgba(0,0,0,.06);border-top:3px solid var(--noite)}
+  .amb-icon{font-size:28px;margin-bottom:8px}
+  .amb-card strong{display:block;font-size:14px;color:var(--grafite);margin-bottom:6px}
+  .amb-card p{font-size:13px;color:#666;line-height:1.6}
+
+  /* ALIMENTAÇÃO */
+  .alim-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:20px 0}
+  .alim-col{border-radius:12px;padding:18px}
+  .alim-sim{background:var(--salvia-light);border-top:3px solid var(--salvia)}
+  .alim-nao{background:#fde8e8;border-top:3px solid #c0392b}
+  .alim-col h4{font-size:14px;font-weight:bold;margin-bottom:10px}
+  .alim-sim h4{color:#2d5a2a}
+  .alim-nao h4{color:#8b0000}
+  .alim-col ul{list-style:none;display:grid;gap:6px}
+  .alim-col li{font-size:13px;color:#444;padding-left:16px;position:relative}
+  .alim-col li::before{position:absolute;left:0;font-size:11px}
+  .alim-sim li::before{content:'✓';color:var(--salvia)}
+  .alim-nao li::before{content:'✕';color:#c0392b}
+  .suplemento-tip{background:var(--noite);border-radius:10px;padding:14px 18px;margin-top:12px;font-size:13px;color:#ccc}
+  .suplemento-tip strong{color:var(--lua);display:block;margin-bottom:4px}
+
+  /* TÉCNICAS */
+  .tecnicas{display:grid;gap:14px;margin:20px 0}
+  .tec-card{background:var(--white);border-radius:12px;padding:18px 20px;box-shadow:0 1px 4px rgba(0,0,0,.06);border-left:4px solid var(--noite)}
+  .tec-card h4{font-size:15px;color:var(--grafite);margin-bottom:6px;display:flex;align-items:center;gap:8px}
+  .tec-card h4 span{background:var(--noite);color:var(--lua);font-size:11px;padding:2px 8px;border-radius:10px}
+  .tec-card p{font-size:14px;color:#555;line-height:1.6}
+
+  /* CHECKLIST */
+  .checklist{display:grid;gap:10px;margin:20px 0}
+  .check-item{background:var(--white);border-radius:10px;padding:14px 18px;display:flex;align-items:center;gap:14px;box-shadow:0 1px 4px rgba(0,0,0,.06);cursor:pointer;transition:background .2s}
+  .check-item:hover{background:var(--cream)}
+  .check-item.checked{background:var(--salvia-light)}
+  .check-item input[type=checkbox]{width:18px;height:18px;accent-color:var(--salvia);flex-shrink:0;cursor:pointer}
+  .check-item span{font-size:14px;color:#444}
+
+  /* DIÁRIO DE SONO */
+  .diario-table{width:100%;border-collapse:collapse;margin-top:20px}
+  .diario-table th{background:var(--noite);color:var(--lua);padding:12px 10px;font-size:12px;text-align:left}
+  .diario-table th:first-child{border-radius:8px 0 0 0}
+  .diario-table th:last-child{border-radius:0 8px 0 0}
+  .diario-table td{padding:4px 6px;background:var(--white);border-bottom:1px solid var(--linha)}
+  .diario-table tr:last-child td{border-bottom:none}
+  .diario-table td:first-child{font-weight:bold;color:var(--terracota);width:72px;font-size:13px;padding:8px 10px}
+  .diario-table input[type=text]{width:100%;border:none;background:transparent;font-size:13px;font-family:Arial,sans-serif;color:var(--grafite);padding:8px 4px;outline:none}
+  .diario-table input::placeholder{color:#bbb}
+  .rating-stars{display:flex;gap:4px}
+  .star{font-size:18px;cursor:pointer;color:#ddd;transition:color .15s;user-select:none}
+  .star.ativa{color:#f5c842}
+
+  /* COMPROMISSO */
+  .compromisso-card{background:var(--noite);border-radius:16px;padding:32px 24px;text-align:center;margin-top:32px}
+  .compromisso-card h3{font-family:Georgia,serif;font-size:20px;color:var(--lua);font-style:italic;margin-bottom:12px}
+  .compromisso-card p{color:#aaa;font-size:14px;margin-bottom:24px}
+  .compromisso-btn{background:var(--terracota);color:var(--white);border:none;border-radius:28px;padding:14px 40px;font-size:16px;font-weight:bold;cursor:pointer;transition:background .2s;font-family:Arial}
+  .compromisso-btn:hover{background:#b06a4e}
+  #compromisso-feito{display:none;color:#7fcf7a;font-size:15px;margin-top:16px;font-style:italic}
+  #btn-rever{display:none;background:transparent;color:var(--lua);border:1px solid var(--terracota);border-radius:20px;padding:8px 20px;font-size:13px;cursor:pointer;margin-top:12px;font-family:Arial}
+
+  /* ENCERRAMENTO */
+  .encerramento{background:var(--terracota-light);border-radius:16px;padding:36px 24px;text-align:center;margin-top:32px}
+  .encerramento h3{font-family:Georgia,serif;font-size:22px;color:var(--grafite);font-style:italic;margin-bottom:14px}
+  .encerramento p{color:#5a3a2a;margin-bottom:16px;font-size:15px}
+  .enc-steps{display:grid;gap:10px;margin:20px 0;text-align:left}
+  .enc-step{background:var(--white);border-radius:10px;padding:14px 16px;display:flex;gap:12px;align-items:flex-start}
+  .enc-step-num{background:var(--terracota);color:var(--white);width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:bold;flex-shrink:0}
+  .enc-step p{font-size:14px;color:#555;margin:0}
+  .workbook-btn{display:inline-block;background:var(--grafite);color:var(--white);text-decoration:none;padding:14px 36px;border-radius:28px;font-weight:bold;font-size:15px;margin-top:16px;transition:background .2s}
+  .workbook-btn:hover{background:#444}
+  .enc-disclaimer{font-size:12px;color:#888;font-style:italic;margin-top:14px}
+
+  .save-fab{position:fixed;bottom:24px;right:20px;background:var(--noite);color:var(--white);border:none;border-radius:28px;padding:12px 20px;font-size:13px;cursor:pointer;box-shadow:0 4px 16px rgba(0,0,0,.25);z-index:200;transition:background .2s;font-family:Arial}
+  .save-fab:hover{background:var(--terracota)}
+  .print-fab{position:fixed;bottom:24px;right:130px;background:var(--salvia);color:var(--white);border:none;border-radius:28px;padding:12px 20px;font-size:13px;cursor:pointer;box-shadow:0 4px 16px rgba(0,0,0,.2);z-index:200;transition:background .2s;font-family:Arial}
+  .print-fab:hover{background:#5e7d5b}
+
+  /* CELEBRATION */
+  #cel-overlay{visibility:hidden;opacity:0;position:fixed;inset:0;background:rgba(0,0,0,.78);z-index:1000;display:flex;align-items:center;justify-content:center;padding:24px;transition:opacity .35s,visibility .35s}
+  #cel-overlay.show{visibility:visible;opacity:1}
+  .cel-box{background:var(--white);border-radius:20px;padding:40px 32px;max-width:420px;width:100%;text-align:center}
+  .cel-emoji{font-size:56px;margin-bottom:16px;line-height:1}
+  .cel-box h2{font-family:Georgia,serif;font-size:19px;color:var(--grafite);font-style:italic;margin-bottom:10px;line-height:1.5}
+  .cel-box p{color:#666;font-size:14px;margin-bottom:24px}
+  .cel-btn-ok{background:var(--terracota);color:var(--white);border:none;border-radius:24px;padding:13px 0;font-size:15px;font-weight:bold;cursor:pointer;font-family:Arial;width:100%;margin-bottom:10px}
+  .cel-btn-replay{background:transparent;color:var(--terracota);border:2px solid var(--terracota);border-radius:24px;padding:10px 0;font-size:14px;cursor:pointer;font-family:Arial;width:100%}
+  .confetti-canvas{position:fixed;inset:0;pointer-events:none;z-index:999}
+
+  .quote-block{border-left:3px solid var(--terracota);padding:10px 16px;margin:20px 0;font-style:italic;color:#666;background:var(--cream);border-radius:0 8px 8px 0}
+  .section-intro{color:#555;margin-bottom:24px}
+
+  @media print{
+    .nav,.progress-bar-wrap,.save-fab,.print-fab,#cel-overlay,.confetti-canvas{display:none!important}
+    .header{background:var(--noite)!important;-webkit-print-color-adjust:exact}
+    .section{padding:24px 16px}
+    body{font-size:13px}
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="estrelas">✦ ✧ ✦ ✧ ✦</div>
+  <div class="badge">★ Bônus 4 — Exclusivo do Workbook ★</div>
+  <h1>Durma Bem Para Viver com Leveza</h1>
+  <p>Estratégias validadas pela ciência do sono para restaurar seu descanso e sua paz emocional<br>Ana Luiza Medeiros – Psicóloga Clínica · analuizapsicologa.com.br</p>
+</div>
+
+<nav class="nav">
+  <a href="#intro" class="active">Início</a>
+  <a href="#ciencia">1 · Ciência</a>
+  <a href="#circadiano">2 · Ritmo</a>
+  <a href="#rotina">3 · Rotina</a>
+  <a href="#ambiente">4 · Ambiente</a>
+  <a href="#alimentacao">5 · Alimentação</a>
+  <a href="#tecnicas">6 · Técnicas</a>
+  <a href="#checklist">7 · Checklist</a>
+</nav>
+<div class="progress-bar-wrap"><div class="progress-bar-fill" id="progressBar"></div></div>
+
+<!-- INTRO -->
+<section class="section" id="intro">
+  <div class="intro-card">
+    <h2>Leia com calma. Você merece esse descanso.</h2>
+    <p>Se você está aqui, é porque o sono tem sido um desafio: noites que não descansam, uma mente que não para ou um corpo que acorda antes de se recuperar. Isso é mais comum do que parece, e tem solução.</p>
+    <p>A privação de sono e a ansiedade formam um ciclo: a ansiedade prejudica o sono, e o sono ruim amplifica a ansiedade. Este guia foi criado para romper esse ciclo, de forma simples, prática e baseada no que a ciência do sono tem de mais atual.</p>
+    <p><strong>O sono não é um luxo. É a fundação de toda saúde mental e emocional.</strong></p>
+  </div>
+  <p style="font-weight:bold;color:var(--grafite);margin:24px 0 12px">Como Usar Este Guia</p>
+  <div class="how-to">
+    <div class="how-step"><div class="how-num">1</div><p><strong>Leia as seções em sequência</strong> — A estrutura é progressiva: cada parte prepara para a próxima.</p></div>
+    <div class="how-step"><div class="how-num">2</div><p><strong>Use os checklists ativamente</strong> — Marque e preencha. Escrever cria compromisso com a mudança.</p></div>
+    <div class="how-step"><div class="how-num">3</div><p><strong>Implante um item por vez</strong> — Não tente mudar tudo de uma vez. A constância supera a intensidade.</p></div>
+    <div class="how-step"><div class="how-num">4</div><p><strong>Revise toda semana</strong> — Retorne ao Diário de Sono e avalie seu progresso regularmente.</p></div>
+  </div>
+</section>
+
+<!-- CIÊNCIA DO SONO -->
+<section class="section" id="ciencia">
+  <div class="sec-header">
+    <div class="sec-num">1</div>
+    <div class="sec-title"><h2>A Ciência do Sono</h2><span>Por que seu cérebro precisa de 7 a 9 horas</span></div>
+  </div>
+  <p class="section-intro">O sono é um processo biológico ativo e essencial, não um simples desligamento. Durante a noite, o cérebro consolida memórias, o sistema imunológico se fortalece, os hormônios se regulam e as emoções são processadas.</p>
+
+  <div class="ciclo-wrap">
+    <div class="ciclo-title">Ciclo do Sono — Estrutura de uma noite de 8h</div>
+    <div class="ciclo-grid">
+      <div class="ciclo-item c-n1"><strong>Ciclo 1</strong><span>N1 · N2 · N3</span></div>
+      <div class="ciclo-item c-n2"><strong>Ciclo 2</strong><span>N2 · N3 · REM</span></div>
+      <div class="ciclo-item c-n3"><strong>Ciclo 3</strong><span>N2 · REM</span></div>
+      <div class="ciclo-item c-rem"><strong>Ciclo 4</strong><span>N2 · REM</span></div>
+    </div>
+    <div class="ciclo-legenda">
+      <div class="leg-item"><div class="leg-dot" style="background:#2d4a6e"></div>N1 Sono leve</div>
+      <div class="leg-item"><div class="leg-dot" style="background:#1a5276"></div>N2 Sono moderado</div>
+      <div class="leg-item"><div class="leg-dot" style="background:#1a3a5c"></div>N3 Sono profundo</div>
+      <div class="leg-item"><div class="leg-dot" style="background:#4a235a"></div>REM Sonhos e memória</div>
+    </div>
+  </div>
+
+  <p style="font-weight:bold;color:var(--grafite);margin:24px 0 12px">Quanto sono você realmente precisa?</p>
+  <div class="horas-grid">
+    <div class="hora-card h-ideal"><strong>7–9h</strong><span>Ideal</span></div>
+    <div class="hora-card h-atencao"><strong>6–7h</strong><span>Atenção</span></div>
+    <div class="hora-card h-risco"><strong>5–6h</strong><span>Risco</span></div>
+    <div class="hora-card h-critico"><strong>&lt; 5h</strong><span>Crítico</span></div>
+  </div>
+
+  <div class="quote-block">Dormir menos para ter mais tempo é trocar ouro por areia.</div>
+
+  <p style="font-weight:bold;color:var(--grafite);margin:20px 0 12px">O que acontece quando você não dorme o suficiente:</p>
+  <div style="background:var(--white);border-radius:12px;padding:18px 20px;box-shadow:0 1px 4px rgba(0,0,0,.06)">
+    <ul style="list-style:none;display:grid;gap:8px">
+      <li style="font-size:14px;color:#444;padding-left:20px;position:relative"><span style="position:absolute;left:0;color:var(--terracota)">■</span>Cortisol elevado: mais ansiedade e irritabilidade</li>
+      <li style="font-size:14px;color:#444;padding-left:20px;position:relative"><span style="position:absolute;left:0;color:var(--terracota)">■</span>Memória e foco prejudicados</li>
+      <li style="font-size:14px;color:#444;padding-left:20px;position:relative"><span style="position:absolute;left:0;color:var(--terracota)">■</span>Imunidade reduzida e maior risco de depressão</li>
+      <li style="font-size:14px;color:#444;padding-left:20px;position:relative"><span style="position:absolute;left:0;color:var(--terracota)">■</span>Pressão arterial elevada</li>
+      <li style="font-size:14px;color:#444;padding-left:20px;position:relative"><span style="position:absolute;left:0;color:var(--terracota)">■</span>Aumento do apetite por açúcar e ganho de peso</li>
+    </ul>
+  </div>
+</section>
+
+<!-- RITMO CIRCADIANO -->
+<section class="section" id="circadiano">
+  <div class="sec-header">
+    <div class="sec-num">2</div>
+    <div class="sec-title"><h2>Seu Relógio Biológico</h2><span>Entendendo o ritmo circadiano</span></div>
+  </div>
+  <p class="section-intro">O ritmo circadiano é um ciclo interno de aproximadamente 24 horas que regula quando você se sente alerta ou sonolenta. Ele é sincronizado pela luz solar e desregulado pela luz artificial noturna.</p>
+  <div class="circadiano">
+    <div class="circ-item"><div class="circ-hora">6h – 8h</div><div class="circ-info"><strong>Manhã: pico de energia</strong><span>Cortisol natural no pico. Ótimo para atividade física e decisões importantes.</span></div></div>
+    <div class="circ-item"><div class="circ-hora">10h – 12h</div><div class="circ-info"><strong>Pré-almoço: foco máximo</strong><span>Foco cognitivo máximo. Ideal para tarefas que exigem concentração.</span></div></div>
+    <div class="circ-item"><div class="circ-hora">14h – 16h</div><div class="circ-info"><strong>Tarde: queda natural</strong><span>Queda natural de energia. Uma soneca de 20 min aqui pode ser restauradora.</span></div></div>
+    <div class="circ-item"><div class="circ-hora">19h – 21h</div><div class="circ-info"><strong>Noite: melatonina</strong><span>Melatonina começa a ser produzida. Reduza luz e estímulos progressivamente.</span></div></div>
+    <div class="circ-item"><div class="circ-hora">22h – 6h</div><div class="circ-info"><strong>Sono: janela ideal</strong><span>Janela ideal para adultos. Respeitar esse horário melhora a qualidade do sono.</span></div></div>
+  </div>
+  <div class="dica-ouro">
+    <div class="icone">🌟</div>
+    <p><strong>Dica de ouro:</strong> Tente acordar sempre no mesmo horário, inclusive nos fins de semana. A consistência do despertar é o regulador mais poderoso do ciclo circadiano.</p>
+  </div>
+</section>
+
+<!-- ROTINA NOTURNA -->
+<section class="section" id="rotina">
+  <div class="sec-header">
+    <div class="sec-num">3</div>
+    <div class="sec-title"><h2>A Rotina Noturna Ideal</h2><span>O protocolo das 2 horas antes de dormir</span></div>
+  </div>
+  <p class="section-intro">As 2 horas antes de dormir são as mais importantes para a qualidade do sono. O que você faz nesse período prepara — ou sabota — todo o ciclo noturno.</p>
+  <div class="protocolo">
+    <div class="proto-item"><div class="proto-tempo">2h antes</div><div class="proto-info"><strong>Reduza a luz</strong><span>Reduza a intensidade das luzes e ative o modo noturno em todos os dispositivos.</span></div></div>
+    <div class="proto-item"><div class="proto-tempo">90 min antes</div><div class="proto-info"><strong>Sem telas</strong><span>Troque o celular por um livro, diário ou conversa tranquila.</span></div></div>
+    <div class="proto-item"><div class="proto-tempo">60 min antes</div><div class="proto-info"><strong>Banho quente</strong><span>A queda de temperatura corporal após o banho induz a sonolência naturalmente.</span></div></div>
+    <div class="proto-item"><div class="proto-tempo">30 min antes</div><div class="proto-info"><strong>Relaxamento</strong><span>Meditação, respiração ou leitura leve. Evite notícias ou trabalho.</span></div></div>
+    <div class="proto-item"><div class="proto-tempo">Ao deitar</div><div class="proto-info"><strong>Respiração Quadrada</strong><span>Inspire 4s, segure 4s, expire 4s, segure 4s. Ativa o sistema nervoso parassimpático.</span></div></div>
+  </div>
+</section>
+
+<!-- AMBIENTE -->
+<section class="section" id="ambiente">
+  <div class="sec-header">
+    <div class="sec-num">4</div>
+    <div class="sec-title"><h2>O Ambiente Perfeito</h2><span>Os 5 pilares do quarto de sono ideal</span></div>
+  </div>
+  <p class="section-intro">Pequenos ajustes que produzem melhorias significativas na qualidade do sono.</p>
+  <div class="ambiente-grid">
+    <div class="amb-card"><div class="amb-icon">🌡️</div><strong>Temperatura</strong><p>18 a 20°C é a faixa ideal. O corpo precisa resfriar para entrar em sono profundo. Use ventilador ou janela entreaberta.</p></div>
+    <div class="amb-card"><div class="amb-icon">🌑</div><strong>Escuridão</strong><p>Máscaras de dormir ou cortinas blackout aumentam a produção de melatonina em até 50%.</p></div>
+    <div class="amb-card"><div class="amb-icon">🔇</div><strong>Silêncio</strong><p>Sons contínuos (ruído branco, chuva, ventilador) mascaram ruídos e melhoram a continuidade do sono.</p></div>
+    <div class="amb-card"><div class="amb-icon">🛏️</div><strong>Conforto</strong><p>Reserve a cama apenas para dormir. Isso treina o cérebro a associá-la ao sono.</p></div>
+    <div class="amb-card"><div class="amb-icon">📵</div><strong>Sem telas</strong><p>O celular no quarto fragmenta o sono mesmo sem ser usado. Mantenha-o fora ou no modo avião.</p></div>
+  </div>
+</section>
+
+<!-- ALIMENTAÇÃO -->
+<section class="section" id="alimentacao">
+  <div class="sec-header">
+    <div class="sec-num">5</div>
+    <div class="sec-title"><h2>Corpo e Alimentação</h2><span>O que comer e evitar para dormir melhor</span></div>
+  </div>
+  <p class="section-intro">O que você consome ao longo do dia tem impacto direto na qualidade do sono noturno. Não é preciso uma dieta rígida: apenas alguns ajustes estratégicos fazem grande diferença.</p>
+  <div class="alim-grid">
+    <div class="alim-col alim-sim">
+      <h4>✓ Favorece o sono</h4>
+      <ul>
+        <li>Kiwi (rico em serotonina)</li>
+        <li>Nozes e castanhas (melatonina)</li>
+        <li>Banana (triptôfano + magnésio)</li>
+        <li>Chá de camomila ou valeriana</li>
+        <li>Aveia (carboidratos complexos + B6)</li>
+        <li>Hidratação ao longo do dia</li>
+      </ul>
+    </div>
+    <div class="alim-col alim-nao">
+      <h4>✕ Atrapalha o sono</h4>
+      <ul>
+        <li>Cafeína após 14h (meia-vida: 5–7h)</li>
+        <li>Álcool: fragmenta o sono REM</li>
+        <li>Refeições pesadas 2h antes</li>
+        <li>Açúcar refinado: eleva e derruba energia</li>
+        <li>Estimulantes digitais (jogos, redes)</li>
+        <li>Melatonina em excesso (sem orientação)</li>
+      </ul>
+    </div>
+  </div>
+  <div class="suplemento-tip">
+    <strong>🌿 Suplementos seguros</strong>
+    Magnésio bisglicinato (relaxamento muscular) e L-teanina (calma sem sedação) têm boa evidência científica. Consulte seu médico antes de usar.
+  </div>
+</section>
+
+<!-- TÉCNICAS -->
+<section class="section" id="tecnicas">
+  <div class="sec-header">
+    <div class="sec-num">6</div>
+    <div class="sec-title"><h2>Técnicas para a Mente</h2><span>Quando o problema é a cabeça que não para</span></div>
+  </div>
+  <p class="section-intro">Para quem sofre de ansiedade, o maior inimigo do sono não é o barulho nem a luz: é a mente em modo ruminação. Estas são as técnicas mais usadas na TCC-I — tratamento de primeira linha recomendado pela ciência.</p>
+  <div class="tecnicas">
+    <div class="tec-card">
+      <h4>Respiração Quadrada 4-4-4-4 <span>TCC-I</span></h4>
+      <p>Inspire pelo nariz por 4s, segure 4s, expire pela boca 4s, segure 4s. Ativa o nervo vago e desacelera o sistema nervoso em segundos.</p>
+    </div>
+    <div class="tec-card">
+      <h4>Dumping Mental <span>Brain Dump</span></h4>
+      <p>15 minutos antes de dormir, escreva TUDO que está na sua cabeça: tarefas, preocupações, pensamentos. O cérebro para de "segurar" o que já está registrado.</p>
+    </div>
+    <div class="tec-card">
+      <h4>Intenção Paradoxal <span>TCC-I</span></h4>
+      <p>Em vez de tentar dormir, tente ficar acordada com os olhos abertos mas sem se mover. Isso remove a ansiedade de desempenho, e geralmente você dorme em minutos.</p>
+    </div>
+    <div class="tec-card">
+      <h4>Visualização do Lugar Seguro <span>Bônus 3</span></h4>
+      <p>Imagine em detalhes um lugar onde você se sente completamente segura. Engaje todos os sentidos. Este é o exercício do Bônus 3 aplicado ao sono.</p>
+    </div>
+    <div class="tec-card">
+      <h4>Contagem Regressiva <span>Cognitiva</span></h4>
+      <p>Conte de 300, subtraindo 3 a cada vez. O esforço cognitivo suave desvia da ruminação sem estimular o cérebro em excesso.</p>
+    </div>
+    <div class="tec-card">
+      <h4>Relaxamento Muscular Progressivo <span>Corporal</span></h4>
+      <p>Tensione e solte cada grupo muscular do pé à cabeça. Reduz a tensão física acumulada e sinaliza ao corpo que é hora de descansar.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CHECKLIST -->
+<section class="section" id="checklist">
+  <div class="sec-header">
+    <div class="sec-num">7</div>
+    <div class="sec-title"><h2>Meu Checklist Noturno</h2><span>Use toda noite · Marque o que você praticou</span></div>
+  </div>
+
+  <div class="checklist">
+    <label class="check-item" id="ck0"><input type="checkbox" onchange="toggleCk(0);autoSave()"><span>Desliguei as telas 90 minutos antes de dormir</span></label>
+    <label class="check-item" id="ck1"><input type="checkbox" onchange="toggleCk(1);autoSave()"><span>Reduzi a intensidade das luzes após as 20h</span></label>
+    <label class="check-item" id="ck2"><input type="checkbox" onchange="toggleCk(2);autoSave()"><span>Tomei banho quente ou morno à noite</span></label>
+    <label class="check-item" id="ck3"><input type="checkbox" onchange="toggleCk(3);autoSave()"><span>Fiz minha rotina de relaxamento (respiração ou meditação)</span></label>
+    <label class="check-item" id="ck4"><input type="checkbox" onchange="toggleCk(4);autoSave()"><span>Mantive o quarto escuro e em temperatura confortável</span></label>
+    <label class="check-item" id="ck5"><input type="checkbox" onchange="toggleCk(5);autoSave()"><span>Evitei cafeína após as 14h</span></label>
+    <label class="check-item" id="ck6"><input type="checkbox" onchange="toggleCk(6);autoSave()"><span>Não fiz refeição pesada 2 horas antes de dormir</span></label>
+    <label class="check-item" id="ck7"><input type="checkbox" onchange="toggleCk(7);autoSave()"><span>Escrevi meus pensamentos ou tarefas (brain dump)</span></label>
+    <label class="check-item" id="ck8"><input type="checkbox" onchange="toggleCk(8);autoSave()"><span>Fiz a Respiração Quadrada ao deitar</span></label>
+    <label class="check-item" id="ck9"><input type="checkbox" onchange="toggleCk(9);autoSave()"><span>Acordei no mesmo horário de ontem</span></label>
+  </div>
+
+  <p style="font-weight:bold;color:var(--grafite);margin:32px 0 12px">🌙 Meu Diário de Sono — Esta Semana</p>
+  <div style="overflow-x:auto">
+  <table class="diario-table">
+    <thead><tr><th>Dia</th><th>Deitei às</th><th>Acordei às</th><th>Qualidade</th><th>Observação</th></tr></thead>
+    <tbody>
+      <tr><td>Segunda</td><td><input type="text" id="d0a" placeholder="Ex: 23h" oninput="autoSave()"></td><td><input type="text" id="d0b" placeholder="Ex: 7h" oninput="autoSave()"></td><td><div class="rating-stars" id="st0"><span class="star" onclick="setStar(0,1)">★</span><span class="star" onclick="setStar(0,2)">★</span><span class="star" onclick="setStar(0,3)">★</span><span class="star" onclick="setStar(0,4)">★</span><span class="star" onclick="setStar(0,5)">★</span></div></td><td><input type="text" id="d0c" placeholder="Como foi?" oninput="autoSave()"></td></tr>
+      <tr><td>Terça</td><td><input type="text" id="d1a" oninput="autoSave()"></td><td><input type="text" id="d1b" oninput="autoSave()"></td><td><div class="rating-stars" id="st1"><span class="star" onclick="setStar(1,1)">★</span><span class="star" onclick="setStar(1,2)">★</span><span class="star" onclick="setStar(1,3)">★</span><span class="star" onclick="setStar(1,4)">★</span><span class="star" onclick="setStar(1,5)">★</span></div></td><td><input type="text" id="d1c" oninput="autoSave()"></td></tr>
+      <tr><td>Quarta</td><td><input type="text" id="d2a" oninput="autoSave()"></td><td><input type="text" id="d2b" oninput="autoSave()"></td><td><div class="rating-stars" id="st2"><span class="star" onclick="setStar(2,1)">★</span><span class="star" onclick="setStar(2,2)">★</span><span class="star" onclick="setStar(2,3)">★</span><span class="star" onclick="setStar(2,4)">★</span><span class="star" onclick="setStar(2,5)">★</span></div></td><td><input type="text" id="d2c" oninput="autoSave()"></td></tr>
+      <tr><td>Quinta</td><td><input type="text" id="d3a" oninput="autoSave()"></td><td><input type="text" id="d3b" oninput="autoSave()"></td><td><div class="rating-stars" id="st3"><span class="star" onclick="setStar(3,1)">★</span><span class="star" onclick="setStar(3,2)">★</span><span class="star" onclick="setStar(3,3)">★</span><span class="star" onclick="setStar(3,4)">★</span><span class="star" onclick="setStar(3,5)">★</span></div></td><td><input type="text" id="d3c" oninput="autoSave()"></td></tr>
+      <tr><td>Sexta</td><td><input type="text" id="d4a" oninput="autoSave()"></td><td><input type="text" id="d4b" oninput="autoSave()"></td><td><div class="rating-stars" id="st4"><span class="star" onclick="setStar(4,1)">★</span><span class="star" onclick="setStar(4,2)">★</span><span class="star" onclick="setStar(4,3)">★</span><span class="star" onclick="setStar(4,4)">★</span><span class="star" onclick="setStar(4,5)">★</span></div></td><td><input type="text" id="d4c" oninput="autoSave()"></td></tr>
+      <tr><td>Sábado</td><td><input type="text" id="d5a" oninput="autoSave()"></td><td><input type="text" id="d5b" oninput="autoSave()"></td><td><div class="rating-stars" id="st5"><span class="star" onclick="setStar(5,1)">★</span><span class="star" onclick="setStar(5,2)">★</span><span class="star" onclick="setStar(5,3)">★</span><span class="star" onclick="setStar(5,4)">★</span><span class="star" onclick="setStar(5,5)">★</span></div></td><td><input type="text" id="d5c" oninput="autoSave()"></td></tr>
+      <tr><td>Domingo</td><td><input type="text" id="d6a" oninput="autoSave()"></td><td><input type="text" id="d6b" oninput="autoSave()"></td><td><div class="rating-stars" id="st6"><span class="star" onclick="setStar(6,1)">★</span><span class="star" onclick="setStar(6,2)">★</span><span class="star" onclick="setStar(6,3)">★</span><span class="star" onclick="setStar(6,4)">★</span><span class="star" onclick="setStar(6,5)">★</span></div></td><td><input type="text" id="d6c" oninput="autoSave()"></td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <!-- COMPROMISSO -->
+  <div class="compromisso-card">
+    <h3>Parabéns Por Ter Chegado Aqui!</h3>
+    <p>Ao completar este guia, você demonstrou coragem e compromisso com o seu bem-estar emocional. Continue firme na sua jornada pelas 41 práticas do workbook.</p>
+    <button class="compromisso-btn" onclick="celebrar()">✨ Confirmo meu compromisso</button>
+    <div id="compromisso-feito">✓ Compromisso assumido com coragem e amor próprio.</div>
+    <button id="btn-rever" onclick="abrirCel()">↺ Rever celebração</button>
+  </div>
+
+  <!-- ENCERRAMENTO -->
+  <div class="encerramento">
+    <h3>Você Chegou Até Aqui</h3>
+    <p>O sono reparador não é um privilégio: é um direito que você pode reconquistar. Cada noite bem dormida é uma vitória sobre a ansiedade.</p>
+    <div class="enc-steps">
+      <div class="enc-step"><div class="enc-step-num">1</div><p><strong>Implante um hábito</strong> — Escolha apenas UM item deste guia para praticar esta semana.</p></div>
+      <div class="enc-step"><div class="enc-step-num">2</div><p><strong>Use o diário</strong> — Registre seu sono por 7 dias. Os padrões ficam visíveis em uma semana.</p></div>
+      <div class="enc-step"><div class="enc-step-num">3</div><p><strong>Combine com o Bônus 3</strong> — A meditação guiada "Acalmando a Voz que Mente" é poderosa aliada da rotina noturna.</p></div>
+    </div>
+    <p><em>Que cada noite te restaure. Que cada manhã te renove.</em></p>
+    <a class="workbook-btn" href="https://analuizapsicologa.com.br" target="_blank">→ Acessar o Workbook Completo</a>
+    <p class="enc-disclaimer">Este guia oferece informações educativas sobre higiene do sono e não substitui avaliação médica.</p>
+  </div>
+</section>
+
+<button class="save-fab" id="saveFab" onclick="manualSave()">💾 Salvar</button>
+<button class="print-fab" onclick="window.print()">🖨 Imprimir PDF</button>
+
+<canvas class="confetti-canvas" id="confettiCanvas"></canvas>
+<div id="cel-overlay">
+  <div class="cel-box">
+    <div class="cel-emoji">🌙</div>
+    <h2 id="cel-texto"></h2>
+    <p id="cel-sub">Que cada noite te restaure. Que cada manhã te renove.</p>
+    <button class="cel-btn-ok" onclick="fecharCel()">✓ Continuar</button>
+    <button class="cel-btn-replay" onclick="abrirCel()">↺ Rever celebração</button>
+  </div>
+</div>
+
+<script>
+const FRASES = [
+  "Você acabou de dar o passo mais importante. O cuidado com você mesma começa agora.",
+  "Coragem não é a ausência do medo. É decidir que você vale mais do que ele.",
+  "Cada pequeno passo na direção certa muda o destino de toda uma jornada.",
+  "Você não precisa estar completamente bem para começar. Você só precisa começar."
+];
+
+function celebrar() {
+  document.getElementById('cel-texto').textContent = FRASES[Math.floor(Math.random()*FRASES.length)];
+  document.getElementById('compromisso-feito').style.display = 'block';
+  document.getElementById('btn-rever').style.display = 'inline-block';
+  abrirCel();
+}
+function abrirCel() {
+  document.getElementById('cel-overlay').classList.add('show');
+  lancarConfete(); tocarJingle();
+}
+function fecharCel() { document.getElementById('cel-overlay').classList.remove('show'); }
+
+function toggleCk(i) {
+  const cb = document.querySelector('#ck'+i+' input');
+  document.getElementById('ck'+i).classList.toggle('checked', cb.checked);
+}
+
+// Stars
+const starData = {};
+function setStar(dia, val) {
+  starData[dia] = val;
+  const stars = document.querySelectorAll('#st'+dia+' .star');
+  stars.forEach((s,i) => s.classList.toggle('ativa', i < val));
+  autoSave();
+}
+
+// SAVE
+const SAVE_KEY = 'bonus4_sono';
+function gatherData() {
+  const d = {};
+  for(let i=0;i<10;i++) { const el=document.querySelector('#ck'+i+' input'); if(el) d['ck'+i]=el.checked; }
+  for(let i=0;i<7;i++) {
+    ['a','b','c'].forEach(c=>{ const el=document.getElementById('d'+i+c); if(el) d['d'+i+c]=el.value; });
+    d['st'+i] = starData[i] || 0;
+  }
+  return d;
+}
+function restoreData(d) {
+  for(let i=0;i<10;i++) { const el=document.querySelector('#ck'+i+' input'); if(el&&d['ck'+i]){el.checked=true;document.getElementById('ck'+i).classList.add('checked');} }
+  for(let i=0;i<7;i++) {
+    ['a','b','c'].forEach(c=>{ const el=document.getElementById('d'+i+c); if(el&&d['d'+i+c]!==undefined) el.value=d['d'+i+c]; });
+    if(d['st'+i]) setStar(i, d['st'+i]);
+  }
+}
+let saveTO=null;
+function autoSave() {
+  clearTimeout(saveTO);
+  saveTO=setTimeout(()=>{
+    localStorage.setItem(SAVE_KEY,JSON.stringify(gatherData()));
+    const n=new Date();
+    document.getElementById('saveFab').textContent=`✓ Salvo às ${n.getHours().toString().padStart(2,'0')}:${n.getMinutes().toString().padStart(2,'0')}`;
+    setTimeout(()=>document.getElementById('saveFab').textContent='💾 Salvar',3000);
+  },800);
+}
+function manualSave() {
+  localStorage.setItem(SAVE_KEY,JSON.stringify(gatherData()));
+  const n=new Date();
+  document.getElementById('saveFab').textContent=`✓ Salvo às ${n.getHours().toString().padStart(2,'0')}:${n.getMinutes().toString().padStart(2,'0')}`;
+  setTimeout(()=>document.getElementById('saveFab').textContent='💾 Salvar',3000);
+}
+window.addEventListener('load',()=>{ try{const s=localStorage.getItem(SAVE_KEY);if(s)restoreData(JSON.parse(s));}catch(e){} });
+
+// CONFETTI
+function lancarConfete() {
+  const canvas=document.getElementById('confettiCanvas');
+  const ctx=canvas.getContext('2d');
+  canvas.width=window.innerWidth; canvas.height=window.innerHeight;
+  const colors=['#C4785A','#7A9B76','#F5EFE6','#F0DDD5','#e8d5b7','#1a1a2e','#fff'];
+  const p=Array.from({length:150},()=>({x:Math.random()*canvas.width,y:Math.random()*canvas.height-canvas.height,r:Math.random()*7+3,c:colors[Math.floor(Math.random()*colors.length)],t:Math.random()*10-5,ta:0,ts:Math.random()*.1+.05}));
+  let f=0;
+  (function draw(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    p.forEach(q=>{ctx.beginPath();ctx.lineWidth=q.r;ctx.strokeStyle=q.c;ctx.moveTo(q.x+q.t+q.r/4,q.y);ctx.lineTo(q.x+q.t,q.y+q.t+q.r/4);ctx.stroke();});
+    p.forEach(q=>{q.ta+=q.ts;q.y+=(Math.cos(f/20)+1+q.r/2)*1.5;q.t=Math.sin(q.ta)*12;if(q.y>canvas.height){q.y=-10;q.x=Math.random()*canvas.width;}});
+    f++;if(f<260)requestAnimationFrame(draw);else ctx.clearRect(0,0,canvas.width,canvas.height);
+  })();
+}
+function tocarJingle() {
+  try {
+    const c=new (window.AudioContext||window.webkitAudioContext)();
+    [523,659,784,1047,784,659,523].reduce((t,freq)=>{
+      const o=c.createOscillator(),g=c.createGain();
+      o.connect(g);g.connect(c.destination);
+      o.frequency.value=freq;o.type='sine';
+      g.gain.setValueAtTime(0.15,t);g.gain.exponentialRampToValueAtTime(0.001,t+.3);
+      o.start(t);o.stop(t+.3);return t+.2;
+    },c.currentTime);
+  }catch(e){}
+}
+
+// NAV + PROGRESS
+const secs=document.querySelectorAll('.section');
+const navAs=document.querySelectorAll('.nav a');
+window.addEventListener('scroll',()=>{
+  let cur='';
+  secs.forEach(s=>{if(window.scrollY>=s.offsetTop-120)cur=s.id;});
+  navAs.forEach(a=>{a.classList.remove('active');if(a.getAttribute('href')==='#'+cur)a.classList.add('active');});
+  const dh=document.documentElement.scrollHeight-window.innerHeight;
+  document.getElementById('progressBar').style.width=(dh>0?window.scrollY/dh*100:0)+'%';
+});
+</script>
+</body>
+</html>
