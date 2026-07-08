@@ -195,6 +195,56 @@ body{font-size:13px}
 </nav>
 <div class="progress-bar-wrap"><div class="progress-bar-fill" id="progressBar"></div></div>
 
+<section id="pergunta-abertura" style="max-width:720px;margin:24px auto 0;padding:0 20px;">
+<div style="background:var(--cream);border-left:4px solid var(--terracota);border-radius:12px;padding:28px 24px;">
+<p style="font-size:11px;font-weight:bold;letter-spacing:1.5px;text-transform:uppercase;color:var(--terracota);margin-bottom:10px;">MOMENTO DE HONESTIDADE</p>
+<h2 style="font-family:Georgia,serif;font-size:19px;color:var(--grafite);line-height:1.4;margin-bottom:14px;">Nem todo cansaço termina quando o dia acaba.</h2>
+<p style="color:#555;font-size:14px;line-height:1.7;margin-bottom:18px;">Antes de seguirmos, responda apenas uma pergunta. Ela vai ajudar você a perceber o que pode estar impedindo seu descanso de ser realmente reparador.</p>
+<p style="font-weight:bold;font-size:14px;color:var(--grafite);margin-bottom:10px;">O que mais costuma acontecer com você na hora de dormir?</p>
+<div id="paOpcoesB4" style="display:grid;gap:8px;">
+<div class="pa-opcao-b4" data-op="1" style="background:var(--bg);border:1.5px solid var(--linha);border-radius:8px;padding:13px 15px;cursor:pointer;transition:all .15s;font-size:14px;color:#444;line-height:1.5;">Minha mente não desacelera e demoro para pegar no sono.</div>
+<div class="pa-opcao-b4" data-op="2" style="background:var(--bg);border:1.5px solid var(--linha);border-radius:8px;padding:13px 15px;cursor:pointer;transition:all .15s;font-size:14px;color:#444;line-height:1.5;">Acordo durante a noite e tenho dificuldade para voltar a dormir.</div>
+<div class="pa-opcao-b4" data-op="3" style="background:var(--bg);border:1.5px solid var(--linha);border-radius:8px;padding:13px 15px;cursor:pointer;transition:all .15s;font-size:14px;color:#444;line-height:1.5;">Durmo a noite inteira, mas acordo sem sentir que descansei.</div>
+</div>
+<div id="paObrigadaB4" style="display:none;margin-top:16px;font-size:14px;color:var(--terracota);font-style:italic;text-align:center;">Obrigada. Guarde essa resposta. Ao longo desta etapa, você vai descobrir práticas que podem ajudar exatamente no tipo de dificuldade que você identificou.</div>
+</div>
+</section>
+
+<script>
+(function(){
+  var wrap = document.getElementById('paOpcoesB4');
+  var obrigada = document.getElementById('paObrigadaB4');
+  if(!wrap) return;
+  var opcoes = wrap.querySelectorAll('.pa-opcao-b4');
+  function limpar(){
+    opcoes.forEach(function(o){ o.style.background='var(--bg)'; o.style.borderColor='var(--linha)'; o.style.color='#444'; });
+  }
+  function marcar(el){
+    limpar();
+    el.style.background='var(--salvia-light)'; el.style.borderColor='var(--salvia)'; el.style.color='var(--grafite)';
+  }
+  var saved = localStorage.getItem('pa_resposta_b4');
+  if(saved){
+    opcoes.forEach(function(el){ if(el.getAttribute('data-op')===saved) marcar(el); });
+    obrigada.style.display='block';
+  }
+  opcoes.forEach(function(el){
+    el.addEventListener('click', function(){
+      var jaMarcado = el.getAttribute('data-op') === localStorage.getItem('pa_resposta_b4');
+      if(jaMarcado){
+        limpar();
+        localStorage.removeItem('pa_resposta_b4');
+        obrigada.style.display='none';
+      } else {
+        marcar(el);
+        localStorage.setItem('pa_resposta_b4', el.getAttribute('data-op'));
+        obrigada.style.display='block';
+      }
+    });
+  });
+})();
+</script>
+
 <section class="section" id="intro">
 <div class="intro-card">
 <h2>Leia com calma. Você merece esse descanso.</h2>
